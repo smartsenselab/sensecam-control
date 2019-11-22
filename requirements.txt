@@ -1,0 +1,4 @@
+urllib3==1.25.7
+requests==2.22.0
+beautifulsoup4==4.8.1
+onvif-zeep==0.2.12
