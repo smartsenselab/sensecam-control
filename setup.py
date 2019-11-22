@@ -2,7 +2,7 @@ import setuptools
 
 REQUIREMENTS = [line for line in open('requirements.txt').read().split('\n') if line != '']
 
-VERSION = '0.0.29'
+VERSION = '0.0.30'
 AUTHOR = 'Igor Dias'
 EMAIL = 'igorhenriquedias94@gmail.com'
 
