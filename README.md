@@ -197,6 +197,10 @@ Camera2.relative_move(0.3, -0.2, 0)
 * `check_user(name)` - Check if user exists.
     - user (str):  user name
 
+* `set_hostname(hostname, *, set_dhcp)` - Configure how the device selects a hostname, with the possibility to set a static hostname and/or enable auto-configuration by DHCP.
+    - hostname (str):  hostname
+    - set_dhcp: enable auto-configuration by DHCP. (yes, no)
+
 * `set_stabilizer( stabilizer, *, stabilizer_margin)` - Set electronic image stabilization (EIS).
     - stabilizer (str): stabilizer value (on, off)
     - stabilizer_margin: stabilization margin (0 ... 200)

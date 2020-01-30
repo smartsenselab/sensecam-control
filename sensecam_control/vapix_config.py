@@ -684,6 +684,37 @@ class CameraConfiguration:
         text2 += str(soup.resp_text())
         return text2
 
+    def set_hostname(self, hostname: str = None, *, set_dhcp: str = None):  # 0
+        """
+        Configure how the device selects a hostname, with the possibility to set a static hostname and/or enable
+        auto-configuration by DHCP.
+
+        Args:
+            hostname: hostname
+            set_dhcp: auto-configuration by DHCP. (yes, no)
+
+        Returns:
+            Success (OK) or Failure (Error and description).
+
+        """
+        payload = {
+            'action': 'update',
+            'Network.HostName': hostname,
+            'Network.VolatileHostName.ObtainFromDHCP': set_dhcp
+        }
+
+        url = 'http://' + self.cam_ip + '/axis-cgi/param.cgi'
+        resp = requests.get(url, auth=HTTPDigestAuth(self.cam_user, self.cam_password),
+                            params=payload)
+
+        if resp.status_code == 200:
+            return resp.text
+
+        soup = BeautifulSoup(resp.text, features="lxml")
+        text2 = str(resp)
+        text2 += str(soup.get_text())
+        return text2
+
     def set_stabilizer(self, stabilizer: str = None, *, stabilizer_margin: int = None):  # 0
         """
         Set electronic image stabilization (EIS).
