@@ -14,8 +14,9 @@ class CameraConfiguration:
     Module for configuration cameras AXIS using Onvif
     """
 
-    def __init__(self, ip, user, password):
+    def __init__(self, ip, port, user, password):
         self.__cam_ip = ip
+        self.__cam_port = port
         self.__cam_user = user
         self.__cam_password = password
 
@@ -27,7 +28,7 @@ class CameraConfiguration:
         Returns:
             Return the ptz service object and media service object
         """
-        mycam = ONVIFCamera(self.__cam_ip, 80, self.__cam_user, self.__cam_password)
+        mycam = ONVIFCamera(self.__cam_ip, self.__cam_port, self.__cam_user, self.__cam_password)
         logging.info('Create media service object')
         media = mycam.create_media_service()
         logging.info('Get target profile')

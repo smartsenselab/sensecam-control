@@ -5,6 +5,7 @@ from sensecam_control import onvif_control
 
 
 ip = '000.000.000.000'
+port = 80
 login = 'login'
 password = 'password'
 
@@ -66,7 +67,7 @@ def capture(ip_camera):
         event_keyboard(cv2.waitKey(1) & 0xff)
 
 
-X = onvif_control.CameraControl(ip, login, password)
+X = onvif_control.CameraControl(ip, port, login, password)
 X.camera_start()
 
 t = threading.Thread(target=capture, args=(ip,))
